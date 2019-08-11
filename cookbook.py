@@ -118,11 +118,7 @@ def deleteRecipe():
     print(x)
     recipeindex = 0
     for a in recipe[recipeindex:]:
-        print(recipeindex, a)
-        time.sleep(1)
         for i in a:
-            print(i)
-            time.sleep(1)
             if i == x:
                 recipe.remove(recipe[recipeindex])
                 break
