@@ -24,8 +24,8 @@ def Start():
     print("Please choose from the following options...")
     print("c - to create a recipe")
     print("s - to select a recipe")
-    print("e - to export to a cookbook")
-    print("i - to import a cookbook")
+    print("e - to export what you've created")
+    print("i - to import what you've already created")
     print("Press anything else to quit.")
     x = input("Please choose now:" )
     if x == "c":
@@ -115,15 +115,15 @@ def selectRecipe1():
 def exportRecipe():
     global recipe
     global ingredients
-    with open('recipe.csv', 'w') as csvFile:
+    with open('recipe.csv', 'a') as csvFile:
         writer = csv.writer(csvFile)
         writer.writerows(recipe)
     csvFile.close()
-    with open('ingredients.csv', 'w') as csvFile:
+    with open('ingredients.csv', 'a') as csvFile:
         writer = csv.writer(csvFile)
         writer.writerows(ingredients)
     csvFile.close()
-    with open('instructions.csv', 'w') as csvFile:
+    with open('instructions.csv', 'a') as csvFile:
         writer = csv.writer(csvFile)
         writer.writerows(instructions)
     csvFile.close()
