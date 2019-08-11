@@ -57,7 +57,7 @@ def createRecipe2():
     global nest
     x = input("Type in your ingredient:" )
     nest.append(str(x))
-    x = input("Ok... now would you like to add another ingredient? y/n:")
+    x = input("Ok... now would you like to add another ingredient? y/n:" )
     if x == "y":
         createRecipe2()
     else:
@@ -118,11 +118,7 @@ def deleteRecipe():
     print(x)
     recipeindex = 0
     for a in recipe[recipeindex:]:
-        print(recipeindex, a)
-        time.sleep(1)
         for i in a:
-            print(i)
-            time.sleep(1)
             if i == x:
                 recipe.remove(recipe[recipeindex])
                 break
@@ -173,9 +169,9 @@ def importRecipe():
     Start()
     
 def printRecipe():
+    print("---")
     print(recipe)
-    print(ingredients)
-    print(instructions)
+    print("---")
     Start()
 
 Start()
