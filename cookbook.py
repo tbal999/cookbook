@@ -16,14 +16,14 @@ ingredients = []
 nest = []
 
 def Start():
-    print("Cookbook!")
+    print("The Cookbook!")
     print("Please choose from the following options...")
     print("s - to select a recipe")
     print("c - to create a recipe")
     print("d - to delete a recipe")
-    print("e - to export what you've created")
-    print("i - to import what you've already created")
-    print("p - print out recipe names")
+    print("p - to print out recipe names")
+    print("e - to export what you've created to csv")
+    print("i - to import from csv")
     print("Press anything else to quit.")
     x = input("Please choose now:" )
     if x == "c":
@@ -172,6 +172,8 @@ def importRecipe():
     
 def printRecipe():
     print(recipe)
+    print(ingredients)
+    print(instructions)
     Start()
 
 Start()
