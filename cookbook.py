@@ -18,8 +18,9 @@ nest = []
 def Start():
     print("Cookbook!")
     print("Please choose from the following options...")
-    print("c - to create a recipe")
     print("s - to select a recipe")
+    print("c - to create a recipe")
+    print("d - to delete a recipe")
     print("e - to export what you've created")
     print("i - to import what you've already created")
     print("p - print out recipe names")
@@ -35,6 +36,8 @@ def Start():
         importRecipe()
     if x == "p":
         printRecipe()
+    if x == "d":
+        deleteRecipe()
     else:
         quit()
         
@@ -104,7 +107,33 @@ def selectRecipe1():
             print(i)
             time.sleep(1)
         break
+    recipeindex = 0
     print("---------------")
+    Start()
+    
+def deleteRecipe():
+    xa = input("What recipe would you like to delete?")
+    x = str(xa)
+    recipeindex = 0
+    for a in recipe[recipeindex:]:
+        print(recipeindex, a)
+        time.sleep(1)
+        for i in a:
+            print(i)
+            time.sleep(1)
+            if i == x:
+                recipe.remove(recipe[recipeindex])
+                break
+        else:
+            recipeindex = recipeindex + 1
+    for a in ingredients[recipeindex:]:
+        ingredients.remove(ingredients[recipeindex])
+        break
+    for a in instructions[recipeindex:]:
+        instructions.remove(instructions[recipeindex])
+        break
+    recipeindex = 0
+    print("---deleted---")
     Start()
     
 def exportRecipe():
@@ -143,7 +172,6 @@ def importRecipe():
     
 def printRecipe():
     print(recipe)
-    print(ingredients)
     Start()
 
 Start()
