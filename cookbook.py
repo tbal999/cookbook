@@ -2,7 +2,7 @@
 """
 Created on Sun Aug 11 15:17:36 2019
 
-@author: thoma
+@author: thomasbalcombe
 """
 #Cooking app.
 
@@ -113,7 +113,9 @@ def selectRecipe1():
     
 def deleteRecipe():
     xa = input("What recipe would you like to delete?")
+    print("---the recipe below---")
     x = str(xa)
+    print(x)
     recipeindex = 0
     for a in recipe[recipeindex:]:
         print(recipeindex, a)
@@ -133,7 +135,7 @@ def deleteRecipe():
         instructions.remove(instructions[recipeindex])
         break
     recipeindex = 0
-    print("---deleted---")
+    print("---has been deleted---")
     Start()
     
 def exportRecipe():
