@@ -5,10 +5,6 @@ Created on Sun Aug 11 15:17:36 2019
 @author: thoma
 """
 #Cooking app.
-#You can:
-#Create Recipes and give them a name, with ingredients.
-#Search for Recipe from name.
-#Type in ingredients and find a Recipe that matches them.
 
 import csv
 from copy import copy
@@ -20,12 +16,13 @@ ingredients = []
 nest = []
 
 def Start():
-    print("== Cook Book ==")
+    print("Cookbook!")
     print("Please choose from the following options...")
     print("c - to create a recipe")
     print("s - to select a recipe")
     print("e - to export what you've created")
     print("i - to import what you've already created")
+    print("p - print out recipe names")
     print("Press anything else to quit.")
     x = input("Please choose now:" )
     if x == "c":
@@ -85,8 +82,6 @@ def selectRecipe1():
     recipeindex = 0
     for a in recipe[recipeindex:]:
         for i in a:
-            print(i)
-            time.sleep(1)
             if i == x:
                 print("You selected "+i+".")
                 print("This is recipe number "+str(recipeindex)+".")
