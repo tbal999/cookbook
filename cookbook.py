@@ -24,8 +24,8 @@ def Start():
     print("p - to print out recipe names")
     print("e - to export what you've created to csv")
     print("i - to import from csv")
-    print("Press anything else to quit.")
-    x = input("Please choose now:" )
+    print("Or press anything else to quit.")
+    x = input("Please choose an option:" )
     if x == "c":
         createRecipe1()
     if x == "s":
@@ -57,7 +57,7 @@ def createRecipe2():
     global nest
     x = input("Type in your ingredient:" )
     nest.append(str(x))
-    x = input("Ok, "+x+"... now would you like to add another ingredient? y/n:")
+    x = input("Ok... now would you like to add another ingredient? y/n:")
     if x == "y":
         createRecipe2()
     else:
@@ -70,7 +70,7 @@ def createRecipe3():
     global nest
     x = input("Now please type in the instructions:" )
     nest.append(str(x))
-    x = input("Ok, "+x+"... now would you like to add additional instructions? y/n:")
+    x = input("Ok... now would you like to add additional instructions? y/n:" )
     if x == "y":
         createRecipe3()
     else:
@@ -80,7 +80,7 @@ def createRecipe3():
         
 
 def selectRecipe1():
-    xa = input("What recipe would you like to pick?")
+    xa = input("What recipe would you like to pick?" )
     x = str(xa)
     recipeindex = 0
     for a in recipe[recipeindex:]:
@@ -112,13 +112,17 @@ def selectRecipe1():
     Start()
     
 def deleteRecipe():
-    xa = input("What recipe would you like to delete?")
+    xa = input("What recipe would you like to delete?" )
     print("---the recipe below---")
     x = str(xa)
     print(x)
     recipeindex = 0
     for a in recipe[recipeindex:]:
+        print(recipeindex, a)
+        time.sleep(1)
         for i in a:
+            print(i)
+            time.sleep(1)
             if i == x:
                 recipe.remove(recipe[recipeindex])
                 break
