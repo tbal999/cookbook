@@ -1,5 +1,6 @@
 # cookbook
 for cooking recipes
+uses regular expressions & string interpolation
 
 The Cookbook!
 Simple command line cookbook that lets you select these options:
