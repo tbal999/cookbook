@@ -3,13 +3,16 @@ for cooking recipes
 uses regular expressions & string interpolation
 
 The Cookbook!
-Simple command line cookbook that lets you select these options:
+Simple command line cookbook that lets you select multiple options:
 s - to select a recipe
 c - to create a recipe
 d - to delete a recipe
 p - to print out recipe names
 e - to export what you've created to csv
 i - to import from csv
+also:
+ed - delete exported data
+x - ingredients search (regex - search for an ingredient and it will provide you recipes that use that ingredient)
 
 USE CASES:
 Press c,
