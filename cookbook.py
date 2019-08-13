@@ -36,12 +36,12 @@ def Start():
         exportRecipe()
     if x == "i":
         importRecipe()
-    if x == "p":
+    if x == "v":
         printRecipe()
     if x == "d":
         deleteRecipe()
     if x == "x":
-        search1 = input("Type in your ingredient: ")
+        search1 = input("Type in your ingredient you wish to look for: ")
         exPress(search1)
     else:
         quit()
@@ -174,9 +174,19 @@ def importRecipe():
     Start()
 
 def exPress(x):
-    for index, i in enumerate(ingredients):
-        if i == x:
-            print(index, i)
+    global recipe
+    global ingredients
+    xindex = 0
+    for i in ingredients:
+        for a in i:
+            if re.search(f"{x}+"    , a):
+                print("We found",i,"in recipe below:")
+                print(recipe[xindex])
+                Start()
+        xindex = xindex + 1
+    print(x, "not found...")
+    print("...try again!")
+    Start()
 
     
 def printRecipe():
