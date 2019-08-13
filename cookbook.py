@@ -9,6 +9,7 @@ Created on Sun Aug 11 15:17:36 2019
 import csv
 from copy import copy
 import time
+import re
 
 recipe = []
 instructions = []
@@ -21,9 +22,10 @@ def Start():
     print("s - to select a recipe")
     print("c - to create a recipe")
     print("d - to delete a recipe")
-    print("p - to print out recipe names")
+    print("v - to view recipes")
     print("e - to export what you've created to csv")
     print("i - to import from csv")
+    print("x - ingredients xpress")
     print("Or press anything else to quit.")
     x = input("Please choose an option:" )
     if x == "c":
@@ -38,6 +40,9 @@ def Start():
         printRecipe()
     if x == "d":
         deleteRecipe()
+    if x == "x":
+        search1 = input("Type in your ingredient: ")
+        exPress(search1)
     else:
         quit()
         
@@ -167,6 +172,12 @@ def importRecipe():
         for row in reader:
             instructions.append(row)
     Start()
+
+def exPress(x):
+    for index, i in enumerate(ingredients):
+        if i == x:
+            print(index, i)
+
     
 def printRecipe():
     print("---")
