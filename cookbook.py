@@ -24,6 +24,7 @@ def Start():
     print("d - to delete a recipe")
     print("v - to view recipes")
     print("e - to export what you've created to csv")
+    print("ed - to delete exported recipes")
     print("i - to import from csv")
     print("x - ingredients xpress")
     print("Or press anything else to quit.")
@@ -40,6 +41,8 @@ def Start():
         printRecipe()
     if x == "d":
         deleteRecipe()
+    if x == "ed":
+        exportDelete()
     if x == "x":
         search1 = input("Type in your ingredient you wish to look for: ")
         exPress(search1)
@@ -142,6 +145,8 @@ def deleteRecipe():
 def exportRecipe():
     global recipe
     global ingredients
+    print("deleted all exported recipes...")
+    print("---=========================--")
     with open('recipe.csv', 'a') as csvFile:
         writer = csv.writer(csvFile)
         writer.writerows(recipe)
@@ -151,6 +156,23 @@ def exportRecipe():
         writer.writerows(ingredients)
     csvFile.close()
     with open('instructions.csv', 'a') as csvFile:
+        writer = csv.writer(csvFile)
+        writer.writerows(instructions)
+    csvFile.close()
+    Start()
+    
+def exportDelete():
+    global recipe
+    global ingredients
+    with open('recipe.csv', 'w+') as csvFile:
+        writer = csv.writer(csvFile)
+        writer.writerows(recipe)
+    csvFile.close()
+    with open('ingredients.csv', 'w+') as csvFile:
+        writer = csv.writer(csvFile)
+        writer.writerows(ingredients)
+    csvFile.close()
+    with open('instructions.csv', 'w+') as csvFile:
         writer = csv.writer(csvFile)
         writer.writerows(instructions)
     csvFile.close()
@@ -176,22 +198,18 @@ def importRecipe():
 def exPress(x):
     global recipe
     global ingredients
-    xindex = 0
-    for i in ingredients:
-        for a in i:
-            if re.search(f"{x}+"    , a):
-                print("We found",i,"in recipe below:")
-                print(recipe[xindex])
-                Start()
-        xindex = xindex + 1
-    print(x, "not found...")
-    print("...try again!")
+    for rindex, i in enumerate(ingredients):
+        print(recipe[rindex])
+        for iindex, a in enumerate(i):
+            if re.search(f"{x}+", a):
+                print("We found",a,"in recipe:",recipe[rindex])
     Start()
 
     
 def printRecipe():
     print("---")
     print(recipe)
+    print(ingredients)
     print("---")
     Start()
 
