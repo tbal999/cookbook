@@ -7,6 +7,7 @@ Created on Sun Aug 11 15:17:36 2019
 #Cooking app.
 
 import csv
+import sys
 from copy import copy
 import time
 import re
@@ -28,7 +29,7 @@ def Start():
     print("ed - to delete exported recipes (only if lists are blank)")
     print("i - to import from csv")
     print("x - search for recipe via a key ingredient")
-    print("Or press anything else to quit.")
+    print("Or press anything else to force quit.")
     x = input("Please choose an option:" )
     if x == "c":
         createRecipe1()
@@ -47,8 +48,10 @@ def Start():
     if x == "x":
         search1 = input("Type in your ingredient you wish to look for: ")
         exPress(search1)
+    if x == "":
+        sys.exit()
     else:
-        quit()
+        sys.exit()
         
 def createRecipe1():
     global recipe
