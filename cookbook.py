@@ -11,6 +11,7 @@ from copy import copy
 import time
 import re
 
+
 recipe = []
 instructions = []
 ingredients = []
@@ -20,19 +21,19 @@ def Start():
     print("The Cookbook!")
     print("Please choose from the following options...")
     print("s - to select a recipe")
-    print("x - search for recipe via ingredients")
     print("c - to create a recipe")
     print("d - to delete a recipe")
     print("v - to view recipes")
-    print("i - to import recipes from csv")
-    print("e - to export all stored recipes to csv")
-    print("ed - to delete all exported recipes in csv")
+    print("e - to export what you've created to csv")
+    print("ed - to delete exported recipes (only if lists are blank)")
+    print("i - to import from csv")
+    print("x - search for recipe via a key ingredient")
     print("Or press anything else to quit.")
     x = input("Please choose an option:" )
     if x == "c":
         createRecipe1()
     if x == "s":
-        selectRecipe()
+        selectRecipe1()
     if x == "e":
         exportRecipe()
     if x == "i":
@@ -46,12 +47,9 @@ def Start():
     if x == "x":
         search1 = input("Type in your ingredient you wish to look for: ")
         exPress(search1)
-    if x == "":
-        quit()
     else:
         quit()
-
-    
+        
 def createRecipe1():
     global recipe
     global nest
@@ -68,20 +66,20 @@ def createRecipe2():
     global nest
     x = input("Type in your ingredient:" )
     nest.append(str(x))
-    x = input("Would you like to add another ingredient? y/n:" )
+    x = input("Ok... now would you like to add another ingredient? y/n:" )
     if x == "y":
         createRecipe2()
     else:
         ingredients.append(copy(nest))
         nest.clear()
     createRecipe3()
-    
+        
 def createRecipe3():
     global ingredients
     global nest
     x = input("Now please type in the instructions:" )
     nest.append(str(x))
-    x = input("Would you like to add additional instructions? y/n:" )
+    x = input("Ok... now would you like to add additional instructions? y/n:" )
     if x == "y":
         createRecipe3()
     else:
@@ -90,7 +88,7 @@ def createRecipe3():
     Start()
         
 
-def selectRecipe():
+def selectRecipe1():
     xa = input("What recipe would you like to pick?" )
     x = str(xa)
     recipeindex = 0
@@ -148,7 +146,7 @@ def deleteRecipe():
 def exportRecipe():
     global recipe
     global ingredients
-    print("Recipes have been exported...")
+    print("deleted all exported recipes...")
     print("---=========================--")
     with open('recipe.csv', 'a') as csvFile:
         writer = csv.writer(csvFile)
@@ -167,8 +165,6 @@ def exportRecipe():
 def exportDelete():
     global recipe
     global ingredients
-    print("Deleted all Exported recipes...")
-    print("---=========================--")
     with open('recipe.csv', 'w+') as csvFile:
         writer = csv.writer(csvFile)
         writer.writerows(recipe)
@@ -214,7 +210,6 @@ def exPress(x):
 def printRecipe():
     print("---")
     print(recipe)
-    print(ingredients)
     print("---")
     Start()
 
